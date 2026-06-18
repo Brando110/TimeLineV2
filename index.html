@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Our Story</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index-style.css" />
+  </head>
+  <body>
+    <!-- FLOAT HEARTS -->
+    <div id="hearts"></div>
+
+    <div class="wrapper">
+      <div class="envelope" id="envelope">
+        <div class="env-back"></div>
+
+        <div class="letter">
+          <a href="main.html" id="timeline-link"> Click to show our Story ♥ </a>
+        </div>
+
+        <div class="env-front"></div>
+        <div class="flap"></div>
+      </div>
+
+      <p class="subtitle">A letter waiting to be opened…</p>
+    </div>
+
+    <script>
+      /* HEART FLOATERS */
+
+      var hearts = document.getElementById("hearts");
+
+      for (var i = 0; i < 18; i++) {
+        var h = document.createElement("div");
+
+        h.className = "heart";
+        h.innerHTML = "♥";
+
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.fontSize = Math.random() * 1.2 + 0.8 + "rem";
+        h.style.animationDuration = Math.random() * 10 + 8 + "s";
+        h.style.animationDelay = Math.random() * -12 + "s";
+
+        hearts.appendChild(h);
+      }
+
+      /* ENVELOPE OPEN */
+
+      var env = document.getElementById("envelope");
+
+      env.addEventListener("click", function () {
+        if (event.target.id === "timeline-link") return;
+
+        env.classList.toggle("open");
+      });
+
+      /* PAGE TRANSITION */
+
+      var link = document.getElementById("timeline-link");
+
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        document.body.classList.add("fade-out");
+
+        var href = this.getAttribute("href");
+
+        setTimeout(function () {
+          window.location.href = href;
+        }, 900);
+      });
+    </script>
+  </body>
+</html>
